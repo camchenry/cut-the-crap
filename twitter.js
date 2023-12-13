@@ -59,8 +59,6 @@ const mutationObserver = new MutationObserver((mutations) => {
   // Delete the "Subscribe to Premium" element
   const premiumText = findElementContainingText("Subscribe to Premium");
   const premiumContainer = findParentElement(premiumText, "border-radius");
-  console.log("premiumText", premiumText);
-  console.log("premiumContainer", premiumContainer);
   deleteElement(premiumContainer);
 
   // Delete the "What's Happening" element
@@ -68,8 +66,6 @@ const mutationObserver = new MutationObserver((mutations) => {
     tag: "h2",
   });
   const whatsHappeningContainer = findParentElement(whatsHappeningText);
-  console.log("whatsHappeningText", whatsHappeningText);
-  console.log("whatsHappeningContainer", whatsHappeningContainer);
   deleteElement(whatsHappeningContainer);
 
   // Delete the "Who to follow" element
@@ -78,8 +74,6 @@ const mutationObserver = new MutationObserver((mutations) => {
     `aside[aria-label="Who to follow"]`
   );
   const whoToFollowContainer = findParentElement(whoToFollowAside);
-  console.log("whoToFollowAside", whoToFollowAside);
-  console.log("whoToFollowContainer", whoToFollowContainer);
   deleteElement(whoToFollowContainer);
 });
 mutationObserver.observe(document.body, {

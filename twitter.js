@@ -68,7 +68,7 @@ const findParentElement = (element, strategy = "border-radius") => {
 
 /**
  *
- * @param {HTMLElement | undefined | null} element
+ * @param {Element | undefined | null} element
  */
 const deleteElement = (element) => {
   element?.remove();
@@ -100,9 +100,16 @@ const mutationObserver = new MutationObserver((mutations) => {
   // Delete the floating "messages" container
   const messagesText = findElementContainingText("Messages", { tag: "h2" });
   const messagesContainer = findParentElement(messagesText, "position-bottom");
-  console.log(messagesText);
-  console.log(messagesContainer);
   deleteElement(messagesContainer);
+
+  // Delete Grok in the navigation
+  const nav = document.querySelector(`nav[aria-label="Primary"]`);
+  const grokLink = nav?.querySelector(`a[aria-label="Grok"]`);
+  deleteElement(grokLink);
+
+  // Delete Premium in the navigation
+  const premiumLink = nav?.querySelector(`a[aria-label="Premium"]`);
+  deleteElement(premiumLink);
 });
 mutationObserver.observe(document.body, {
   childList: true,

@@ -71,6 +71,16 @@ const mutationObserver = new MutationObserver((mutations) => {
   console.log("whatsHappeningText", whatsHappeningText);
   console.log("whatsHappeningContainer", whatsHappeningContainer);
   deleteElement(whatsHappeningContainer);
+
+  // Delete the "Who to follow" element
+  /** @type {HTMLElement | null} */
+  const whoToFollowAside = document.querySelector(
+    `aside[aria-label="Who to follow"]`
+  );
+  const whoToFollowContainer = findParentElement(whoToFollowAside);
+  console.log("whoToFollowAside", whoToFollowAside);
+  console.log("whoToFollowContainer", whoToFollowContainer);
+  deleteElement(whoToFollowContainer);
 });
 mutationObserver.observe(document.body, {
   childList: true,

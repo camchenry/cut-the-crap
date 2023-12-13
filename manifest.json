@@ -10,6 +10,10 @@
     {
       "matches": ["*://*.twitter.com/*"],
       "js": ["twitter.js"]
+    },
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["youtube.js"]
     }
   ]
 }

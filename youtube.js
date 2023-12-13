@@ -84,6 +84,16 @@ const mutationObserver = new MutationObserver((mutations) => {
   // Delete the chips header
   const chipsHeader = document.querySelector(`#header`);
   deleteElement(chipsHeader);
+
+  // Delete "Shorts" section
+  const shortsSections = Array.from(
+    document.querySelectorAll("ytd-rich-section-renderer")
+  ).filter((section) => {
+    return section.textContent?.trim().startsWith("Shorts");
+  });
+  for (const section of shortsSections) {
+    deleteElement(section);
+  }
 });
 mutationObserver.observe(document.body, {
   childList: true,

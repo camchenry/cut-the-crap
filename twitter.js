@@ -1,13 +1,29 @@
-const findElementContainingText = (text, root = document) => {
-  return Array.from(root.querySelectorAll("div")).find(
+// @ts-check
+
+/**
+ * @param {string} text
+ * @param {{
+ *  root?: HTMLElement
+ *  tag?: string
+ * }} [options]
+ * @returns {HTMLElement | undefined}
+ */
+const findElementContainingText = (text, options) => {
+  const root = options?.root ?? document.body;
+  const tag = options?.tag ?? "div";
+  /** @type {any} */
+  const el = Array.from(root.querySelectorAll(tag)).find(
     (element) => element.textContent === text
   );
+  return el;
 };
 
 /**
- * @param {HTMLElement} element
+ * @param {HTMLElement | null | undefined} element
+ * @param {"border-radius"} [strategy]
  */
 const findParentElement = (element, strategy = "border-radius") => {
+  if (!element) return null;
   if (strategy === "border-radius") {
     let height = 0;
     /** @type {HTMLElement | null} */
@@ -40,12 +56,21 @@ const deleteElement = (element) => {
 // Listen for DOM changes
 // TODO: Get smarter about performance and not running this on every DOM change
 const mutationObserver = new MutationObserver((mutations) => {
-  // Delete the "Subscribe to Premium element"
+  // Delete the "Subscribe to Premium" element
   const premiumText = findElementContainingText("Subscribe to Premium");
   const premiumContainer = findParentElement(premiumText, "border-radius");
   console.log("premiumText", premiumText);
   console.log("premiumContainer", premiumContainer);
   deleteElement(premiumContainer);
+
+  // Delete the "What's Happening" element
+  const whatsHappeningText = findElementContainingText("What’s happening", {
+    tag: "h2",
+  });
+  const whatsHappeningContainer = findParentElement(whatsHappeningText);
+  console.log("whatsHappeningText", whatsHappeningText);
+  console.log("whatsHappeningContainer", whatsHappeningContainer);
+  deleteElement(whatsHappeningContainer);
 });
 mutationObserver.observe(document.body, {
   childList: true,

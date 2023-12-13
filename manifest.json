@@ -12,7 +12,7 @@
       "js": ["twitter.js"]
     },
     {
-      "matches": ["*://*.youtube.com/*"],
+      "matches": ["https://www.youtube.com/*"],
       "js": ["youtube.js"]
     }
   ]

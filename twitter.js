@@ -20,8 +20,9 @@ const findElementContainingText = (text, options) => {
 
 /**
  * @param {HTMLElement | null | undefined} element
- * @param {"border-radius"} [strategy]
+ * @param {"border-radius" | "position-bottom"} [strategy]
  */
+const MAX_PARENT_HEIGHT = 25;
 const findParentElement = (element, strategy = "border-radius") => {
   if (!element) return null;
   if (strategy === "border-radius") {
@@ -37,7 +38,27 @@ const findParentElement = (element, strategy = "border-radius") => {
       }
       parentElement = parentElement.parentElement;
       height++;
-      if (height > 10) {
+      if (height > MAX_PARENT_HEIGHT) {
+        return null;
+      }
+    }
+    return parentElement;
+  } else if (strategy === "position-bottom") {
+    let height = 0;
+    /** @type {HTMLElement | null} */
+    let parentElement = element;
+    // Keep going up parent elements until we find one with a border-radius set on it
+    while (parentElement) {
+      const style = globalThis.getComputedStyle(parentElement);
+      const position = style["position"];
+      const bottom = style["bottom"];
+      console.log(parentElement, position, bottom);
+      if (position === "absolute" && bottom === "0px") {
+        return parentElement;
+      }
+      parentElement = parentElement.parentElement;
+      height++;
+      if (height > MAX_PARENT_HEIGHT) {
         return null;
       }
     }
@@ -75,6 +96,13 @@ const mutationObserver = new MutationObserver((mutations) => {
   );
   const whoToFollowContainer = findParentElement(whoToFollowAside);
   deleteElement(whoToFollowContainer);
+
+  // Delete the floating "messages" container
+  const messagesText = findElementContainingText("Messages", { tag: "h2" });
+  const messagesContainer = findParentElement(messagesText, "position-bottom");
+  console.log(messagesText);
+  console.log(messagesContainer);
+  deleteElement(messagesContainer);
 });
 mutationObserver.observe(document.body, {
   childList: true,

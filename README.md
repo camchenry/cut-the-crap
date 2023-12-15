@@ -8,11 +8,11 @@ it removes references to Shorts in YouTube, and removes the Trending section on 
 
 Twitter (before)
 
-![Twitter before](./docs/assets/twitter-after-dec13.png)
+![Twitter before](./docs/assets/twitter-before-dec13.png)
 
 Twitter (after)
 
-![Twitter after](./docs/assets/twitter-before-dec13.png)
+![Twitter after](./docs/assets/twitter-after-dec14.png)
 
 ## Features
 

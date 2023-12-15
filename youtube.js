@@ -77,22 +77,32 @@ const deleteElement = (element) => {
 // Listen for DOM changes
 // TODO: Get smarter about performance and not running this on every DOM change
 const mutationObserver = new MutationObserver((mutations) => {
+  const isHomepage = document.location.pathname === "/";
+  const isWatchPage = document.location.pathname.startsWith("/watch");
+
   // Delete the "Shorts" navigation link
   const shortsLink = document.querySelector(`a[title="Shorts"]`);
   deleteElement(shortsLink);
 
-  // Delete the chips header
-  const chipsHeader = document.querySelector(`#header`);
-  deleteElement(chipsHeader);
+  if (isHomepage) {
+    // Delete the chips header
+    const chipsHeader = document.querySelector(`#header`);
+    deleteElement(chipsHeader);
 
-  // Delete "Shorts" section
-  const shortsSections = Array.from(
-    document.querySelectorAll("ytd-rich-section-renderer")
-  ).filter((section) => {
-    return section.textContent?.trim().startsWith("Shorts");
-  });
-  for (const section of shortsSections) {
-    deleteElement(section);
+    // Delete "Shorts" section
+    const shortsSections = Array.from(
+      document.querySelectorAll("ytd-rich-section-renderer")
+    ).filter((section) => {
+      return section.textContent?.trim().startsWith("Shorts");
+    });
+    for (const section of shortsSections) {
+      deleteElement(section);
+    }
+  } else if (isWatchPage) {
+    const relatedChips = document.querySelector(
+      `yt-related-chip-cloud-renderer`
+    );
+    deleteElement(relatedChips);
   }
 });
 mutationObserver.observe(document.body, {

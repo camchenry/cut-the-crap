@@ -110,6 +110,10 @@ const mutationObserver = new MutationObserver((mutations) => {
   // Delete Premium in the navigation
   const premiumLink = nav?.querySelector(`a[aria-label="Premium"]`);
   deleteElement(premiumLink);
+
+  // Delete Premium in the navigation
+  const exploreLink = nav?.querySelector(`a[aria-label="Search and explore"]`);
+  deleteElement(exploreLink);
 });
 mutationObserver.observe(document.body, {
   childList: true,

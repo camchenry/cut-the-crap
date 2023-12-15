@@ -26,6 +26,8 @@ Twitter (after)
   - Deletes the link to "Premium" in navigation
   - Deletes the link to "Grok" in navigation
   - Deletes the floating direct messages dialog
+- LinkedIn
+  - Deletes the "Messaging" overlay
 
 ## How to use
 

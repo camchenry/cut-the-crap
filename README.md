@@ -6,6 +6,14 @@ it removes references to Shorts in YouTube, and removes the Trending section on 
 > [!NOTE]
 > This extension is very experimental and still in development. I wouldn't recommend depending on it for day-to-day use.
 
+Twitter (before)
+
+![Twitter before](./docs/assets/twitter-after-dec13.png)
+
+Twitter (after)
+
+![Twitter after](./docs/assets/twitter-before-dec13.png)
+
 ## Features
 
 - YouTube

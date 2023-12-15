@@ -28,6 +28,8 @@ Twitter (after)
   - Deletes the floating direct messages dialog
 - LinkedIn
   - Deletes the "Messaging" overlay
+  - Deletes the "LinkedIn News" sidebar section
+  - Deletes the sidebar footer content
 
 ## How to use
 

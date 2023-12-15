@@ -30,6 +30,7 @@ Twitter (after)
   - Deletes the "Messaging" overlay
   - Deletes the "LinkedIn News" sidebar section
   - Deletes the sidebar footer content
+  - Removing Premium upsell and marketing content
 
 ## How to use
 

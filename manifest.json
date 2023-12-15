@@ -4,7 +4,7 @@
   "version": "1.0",
   "description": "Removes distracting content from webpages",
   "icons": {
-    "48": "icons/border-48.png"
+    "48": "icons/scissor-48.png"
   },
   "content_scripts": [
     {

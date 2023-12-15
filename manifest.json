@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Block distractions",
+  "name": "Cut the Crap",
   "version": "1.0",
   "description": "Removes distracting content from webpages",
   "icons": {

@@ -114,6 +114,9 @@ const mutationObserver = new MutationObserver((mutations) => {
   // Delete Premium in the navigation
   const exploreLink = nav?.querySelector(`a[aria-label="Search and explore"]`);
   deleteElement(exploreLink);
+
+  // Clean up footer content
+  deleteElement(document.querySelector(`nav[aria-label="Footer"]`));
 });
 mutationObserver.observe(document.body, {
   childList: true,
